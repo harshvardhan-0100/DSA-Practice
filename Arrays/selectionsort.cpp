@@ -4,9 +4,13 @@ using namespace std;
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         int mini = i; 
-        for (int j = 0; j < n; j++) {
-            if (arr[j] < arr[mini]) swap(arr[j], arr[mini]); 
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] < arr[mini]) mini = j; 
         }
+        int temp = arr[mini]; 
+        arr[mini] = arr[i]; 
+        arr[i] = temp; 
+
     }
 }
 int main() {
@@ -18,7 +22,17 @@ int main() {
         cin >> arr[i]; 
     }
 
-    selectionSort(arr, n); 
+    // selectionSort(arr, n);
+    for (int i = 0; i < n; i++) {
+        int mini = i; 
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] < arr[mini]) mini = j; 
+        }
+        int temp = arr[i]; 
+        arr[i] = arr[mini]; 
+        arr[mini] = temp; 
+
+    } 
 
     for (int i = 0; i < n; i++) {
         cout << arr[i] << "\t"; 
