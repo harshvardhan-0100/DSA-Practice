@@ -44,5 +44,4 @@ int main()
 
     FrequencyCounter fc; 
     fc.countFreq(nums, 12); 
-    
 }
