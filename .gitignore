@@ -1,0 +1,5 @@
+# Executables
+*.exe
+
+# VS Code
+.vscode/
