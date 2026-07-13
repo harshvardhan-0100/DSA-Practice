@@ -1,14 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
-vector<int> rotateArray(vector<int> arr, int k) {
-    int n = arr.size(); 
-    int count = k; 
-
-    for (int i = 0; i < n; i++) {
+void getElements(vector<int> arr) {
+    for (int i = 0; i < arr.size(); i++) {
         cout << arr[i] << " "; 
     }
     cout << endl;
+}
+
+vector<int> rotateArray(vector<int> &arr, int k) {
+    int n = arr.size(); 
+    int count = k; 
+
+    getElements(arr); 
 
     int last = arr[n - 1]; 
 
@@ -20,10 +24,7 @@ vector<int> rotateArray(vector<int> arr, int k) {
 
     count--; 
 
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " "; 
-    }
-    cout << endl; 
+    getElements(arr); 
 
     return arr; 
 }
