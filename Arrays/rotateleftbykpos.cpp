@@ -14,6 +14,8 @@ void leftRotate(vector<int> nums, int k) {
 
     int n = nums.size(); 
 
+    k = k % n; 
+    
     cout << "Before rotation: "; 
     getElements(nums); 
 
