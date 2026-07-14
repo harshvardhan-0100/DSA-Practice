@@ -25,8 +25,8 @@ void rightRotate(vector<int> nums, int k) {
     cout << "The temporary array: "; 
     getElements(temp); 
 
-    for (int i = 0; i < n - k; i++) {
-        nums[i + k] = nums[i];  
+    for (int i = n - 1; i >= k; i--) {
+        nums[i] = nums[i - k];  
     }
 
     for (int i = 0; i < k; i++) {
