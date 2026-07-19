@@ -49,7 +49,7 @@ void unionArrayOptimal(vector<int> arr1, vector<int> arr2)
         j++;
     }
 
-    while (i > n)
+    while (i < n)
     {
         if (unionArray.back() != arr1[i] || unionArray.size() == 0)
         {
