@@ -24,7 +24,7 @@ void unionArrayOptimal(vector<int> arr1, vector<int> arr2)
     {
         if (arr1[i] <= arr2[j])
         {
-            if (unionArray.back() != arr1[i] || unionArray.size() == 0)
+            if (unionArray.empty() || unionArray.back() != arr1[i])
             {
                 unionArray.push_back(arr1[i]);
             }
@@ -32,7 +32,7 @@ void unionArrayOptimal(vector<int> arr1, vector<int> arr2)
         }
         else if (arr2[j] < arr1[i])
         {
-            if (unionArray.back() != arr2[j] || unionArray.size() == 0)
+            if (unionArray.empty() || unionArray.back() != arr2[j])
             {
                 unionArray.push_back(arr2[j]);
             }
@@ -42,7 +42,7 @@ void unionArrayOptimal(vector<int> arr1, vector<int> arr2)
 
     while (j < m)
     {
-        if (unionArray.back() != arr2[j] || unionArray.size() == 0)
+        if (unionArray.empty() || unionArray.back() != arr2[j])
         {
             unionArray.push_back(arr2[j]);
         }
@@ -51,7 +51,7 @@ void unionArrayOptimal(vector<int> arr1, vector<int> arr2)
 
     while (i < n)
     {
-        if (unionArray.back() != arr1[i] || unionArray.size() == 0)
+        if (unionArray.empty() || unionArray.back() != arr1[i])
         {
             unionArray.push_back(arr1[i]);
         }
