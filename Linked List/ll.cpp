@@ -17,6 +17,8 @@ int main() {
     vector<int> arr = {2, 5, 7, 8}; 
     Node* y = new Node(arr[0], nullptr); 
     cout << y << endl;
+    cout << y->data << endl;
+    cout << y->next << endl;
 
     return 0; 
 }
