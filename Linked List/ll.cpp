@@ -19,12 +19,21 @@ struct Node {
     }
 };
 
+Node* convertArrtoLL(vector<int> &arr) {
+    Node* head = new Node(arr[0]); 
+    Node* mover = head; 
+    for (int i = 1; i < arr.size(); i++) {
+        Node* temp = new Node(arr[i]); 
+        mover->next = temp;
+        mover = temp; 
+    }
+    return head; 
+}
+
 int main() {
-    vector<int> arr = {2, 5, 7, 8}; 
-    Node* y = new Node(arr[0], nullptr); 
-    cout << y << endl;
-    cout << y->data << endl;
-    cout << y->next << endl;
+    vector<int> arr = {12, 5, 7, 8}; 
+    Node* head = convertArrtoLL(arr); 
+    cout << head->data; 
 
     return 0; 
 }
