@@ -11,6 +11,12 @@ struct Node {
         data = data1; 
         next = next1; 
     }
+
+    public: 
+    Node(int data1) {
+        data = data1; 
+        next = nullptr; 
+    }
 };
 
 int main() {
