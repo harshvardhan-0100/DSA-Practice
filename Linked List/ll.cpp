@@ -15,11 +15,8 @@ struct Node {
 
 int main() {
     vector<int> arr = {2, 5, 7, 8}; 
-    Node y = Node(arr[0], nullptr); 
-    Node* x = &y; 
-    cout << y.data << endl; 
-    cout << y.next << endl;
-    cout << x << endl;
+    Node* y = new Node(arr[0], nullptr); 
+    cout << y << endl;
 
     return 0; 
 }
