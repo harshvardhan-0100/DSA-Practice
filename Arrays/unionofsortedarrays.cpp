@@ -14,20 +14,19 @@ void unionOfArrays(vector<int> arr1, vector<int> arr2) {
 
     vector<int> unionArray; 
 
-    set<int> st; 
-
-    for (int i = 0; i < n; i++) {
-        st.insert(arr2[i]); 
-    }
+    map<int, int> freq;  
 
     for (int i = 0; i < m; i++) {
-        st.insert(arr1[i]);
+        freq[arr1[i]] += 1; 
+    }
+    for (int i = 0; i < n; i++) {
+        freq[arr2[i]] += 1; 
     }
 
-    for (auto it : st) {
-        unionArray.push_back(it); 
+    for (auto &it : freq) {
+        unionArray.push_back(it.first);
     }
-
+    
     getElements(unionArray); 
 }
 
