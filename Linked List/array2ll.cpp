@@ -31,13 +31,26 @@ Node* array2ll(vector<int> arr) {
     return head; 
 }
 
-int lengthofll(Node* temp) {
+int lengthofll(Node* head) {
+    Node* temp = head; 
     int cnt = 0; 
     while (temp) {
         cnt++; 
         temp = temp->next; 
     }
     return cnt; 
+}
+
+int checkIfPresent(Node* head, int val) {
+    Node* temp = head; 
+    while (temp) {
+        if (temp->data == val) {
+            return 1; 
+            break; 
+        }
+        temp = temp->next; 
+    }
+    return 0; 
 }
 
 int main() {
@@ -53,7 +66,9 @@ int main() {
         temp = temp->next; 
     }
 
-    temp = head;  // reassign temp to head, for finding length of ll
+    cout << endl << "Length of LL: " << lengthofll(head) << endl;
 
-    cout << endl << "Length of LL: " << lengthofll(temp) << endl;
+    cout << checkIfPresent(head, 12) << endl; 
+    cout << checkIfPresent(head, 41) << endl;
+    cout << checkIfPresent(head, 8) << endl;
 }
