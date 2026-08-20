@@ -31,10 +31,19 @@ Node* array2ll(vector<int> arr) {
     return head; 
 }
 
+int lengthofll(Node* temp) {
+    int cnt = 0; 
+    while (temp) {
+        cnt++; 
+        temp = temp->next; 
+    }
+    return cnt; 
+}
+
 int main() {
     vector<int> nums = {12, 1, 3, 8};
 
-    Node* head = array2ll(nums); 
+    Node* head = array2ll(nums);  // created the linked list
     cout << head->data << endl; 
 
     // traversal in a linked list
@@ -43,5 +52,8 @@ int main() {
         cout << temp->data << " "; 
         temp = temp->next; 
     }
-    
+
+    temp = head;  // reassign temp to head, for finding length of ll
+
+    cout << endl << "Length of LL: " << lengthofll(temp) << endl;
 }
