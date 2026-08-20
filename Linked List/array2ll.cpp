@@ -36,4 +36,12 @@ int main() {
 
     Node* head = array2ll(nums); 
     cout << head->data << endl; 
+
+    // traversal in a linked list
+    Node* temp = head;   // never tamper with the head pointer
+    while (temp) {
+        cout << temp->data << " "; 
+        temp = temp->next; 
+    }
+    
 }
