@@ -2,22 +2,18 @@
 using namespace std; 
 
 int maxSubArray(vector<int>& nums) {
-    int maxi = INT_MIN;
-    int sum = 0; 
+    int maxi = nums[0]; 
+    int sum = nums[0]; 
 
-    for (int i = 0; i < nums.size(); i++) {
-        sum += nums[i]; 
-
-        if (sum < 0) sum = 0; 
-
-        maxi = max(sum, maxi); 
+    for (int i = 1; i < nums.size(); i++) {
+        sum = max(nums[i], sum + nums[i]);
+        maxi = max(sum, maxi);  
     }
-
     return maxi; 
 }
 
 int main() {
-    vector<int> nums = {4, -1, 3, 2, -5, 1, 7, -3, 4}; 
+    vector<int> nums = {-5, -2, -8, -1}; 
 
     cout << "The maximum subarray sum is: " << maxSubArray(nums) << endl;
 }
