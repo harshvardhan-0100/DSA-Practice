@@ -8,10 +8,8 @@ vector<int> twoSum(vector<int> nums, int target) {
         int num = nums[i]; 
         int more = target - num; 
 
-        for (auto it : mpp) {
-            if (it.first == more) {
-                return {i, it.second}; 
-            }
+        if (mpp.find(more) != mpp.end()) {
+            return {i, mpp[more]}; 
         }
 
         mpp[nums[i]] = i; 
