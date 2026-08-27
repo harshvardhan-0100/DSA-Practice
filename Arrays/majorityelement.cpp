@@ -2,22 +2,38 @@
 using namespace std; 
 
 int majorityElement(vector<int> nums) {
-    map<int, int> mpp; 
+    int ele; 
+    int cnt = 0; 
 
     for (int i = 0; i < nums.size(); i++) {
-        mpp[nums[i]]++; 
+        if (cnt == 0) {
+            cnt = 1; 
+            ele = nums[i]; 
+        } else if (nums[i] == ele) {
+            cnt++; 
+        } else {
+            cnt--; 
+        }
     }
 
-    for (auto it : mpp) {
-        if (it.second > (floor(nums.size()) / 2)); 
-        cout << it.first << endl;
-        return it.first; 
+    // safeguard check
+    int cnt1 = 0; 
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] == ele) {
+            cnt1++; 
+        }
     }
+
+    if (cnt1 > floor(nums.size() / 2)) {
+        cout << ele << endl;
+        return ele; 
+    }
+
     return -1; 
 }
 
 int main() {
-    vector<int> nums = {2, 3, 4, 5, 2, 3, 2, 3, 2, 3, 2, 2, 2, 2}; 
+    vector<int> nums = {2, 4, 2, 4, 4, 3, 2, 4, 2, 4, 2, 4, 4, 4}; 
     majorityElement(nums); 
 
     return 0; 
