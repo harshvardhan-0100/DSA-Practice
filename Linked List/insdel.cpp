@@ -27,6 +27,14 @@ Node* arraytoll(vector<int> arr) {
     return head; 
 }
 
+void print(Node* head) {
+    while (head != nullptr) {
+        cout << head->data << " ";
+        head = head->next;  
+    } 
+    cout << endl;
+}
+
 // delete the head
 Node* deleteHead(Node* head) {
     Node* temp = head; 
