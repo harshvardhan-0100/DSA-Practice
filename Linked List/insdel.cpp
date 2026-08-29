@@ -36,18 +36,19 @@ void print(Node* head) {
 }
 
 // delete the head
-Node* deleteHead(Node* head) {
+Node* removesHead(Node* head) {
+    if (head == nullptr) return head;
     Node* temp = head; 
     head = head->next; 
-    free(temp); 
+    delete temp; 
     return head;
 }
 
 int main() {
     vector<int> nums = {12, 44, 87, 136, 299}; 
     Node* head = arraytoll(nums); 
-    head = deleteHead(head); 
-
-    cout << head->data << endl;
-    
+     
+    print(head); 
+    head = removesHead(head);
+    print(head); 
 }
