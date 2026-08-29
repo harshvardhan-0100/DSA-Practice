@@ -2,14 +2,14 @@
 using namespace std; 
 
 int maxProfit(vector<int> prices) {
-    int profit = 0; 
+    int mini = prices[0]; 
     int max_profit = 0; 
-
-    for (int i = 0; i < prices.size(); i++) {
-        for (int j = i + 1; j < prices.size(); j++) {
-            profit = prices[j] - prices[i]; 
-            max_profit = max(max_profit, profit); 
-        }
+    int n = prices.size(); 
+    
+    for (int i = 1; i < n; i++) {
+        int cost = prices[i] - mini; 
+        max_profit = max(max_profit, cost); 
+        mini = min(mini, prices[i]); 
     }
 
     return max_profit; 
