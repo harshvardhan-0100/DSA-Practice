@@ -44,11 +44,27 @@ Node* removesHead(Node* head) {
     return head;
 }
 
+Node* deleteTail(Node* head) {
+    if (head == nullptr || head->next == nullptr) {
+        return nullptr; // since there is only one element which is both head & tail!
+    }
+    // in all other cases there will be minimum of two elements, so deletion of tail is possible
+    Node* temp = head; 
+
+    while (temp->next->next != nullptr) {
+        temp = temp->next; 
+    }
+    delete temp->next; 
+    temp->next = nullptr; 
+
+    return head; 
+}
+
 int main() {
     vector<int> nums = {12, 44, 87, 136, 299}; 
     Node* head = arraytoll(nums); 
      
     print(head); 
-    head = removesHead(head);
+    head = deleteTail(head); 
     print(head); 
 }
