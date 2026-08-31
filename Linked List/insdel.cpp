@@ -94,22 +94,20 @@ Node* deleteK(Node* head, int k) {
     return head; 
 }
 
-Node* deleteK(Node* head, int k) {
+Node* deleteEl(Node* head, int el) {
     if (head == nullptr) return head; // basic edge case
 
-    if (k == 1) {
-        Node* temp = head; 
+    if (head->data == el) {
+        Node* temp = head;
         head = head->next;
-        delete temp; 
+        delete temp;  
         return head; 
     } // second edge case (basically deleting the head)
-
-    int cnt = 0; 
+ 
     Node* temp = head; 
     Node* prev = nullptr; 
     while (temp != nullptr) {
-        cnt++; 
-        if (cnt == k) {
+        if (temp->data == el) {
             prev->next = prev->next->next; 
             delete temp; 
             break; 
@@ -125,6 +123,6 @@ int main() {
     Node* head = arraytoll(nums); 
      
     print(head); 
-    head = deleteK(head, 7); 
+    head = deleteEl(head, 136); 
     print(head); 
 }
