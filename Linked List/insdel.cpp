@@ -94,6 +94,31 @@ Node* deleteK(Node* head, int k) {
     return head; 
 }
 
+Node* deleteK(Node* head, int k) {
+    if (head == nullptr) return head; // basic edge case
+
+    if (k == 1) {
+        Node* temp = head; 
+        head = head->next;
+        delete temp; 
+        return head; 
+    } // second edge case (basically deleting the head)
+
+    int cnt = 0; 
+    Node* temp = head; 
+    Node* prev = nullptr; 
+    while (temp != nullptr) {
+        cnt++; 
+        if (cnt == k) {
+            prev->next = prev->next->next; 
+            delete temp; 
+            break; 
+        }
+        prev = temp; 
+        temp = temp->next; 
+    }
+    return head; 
+}
 
 int main() {
     vector<int> nums = {12, 44, 87, 136, 299}; 
