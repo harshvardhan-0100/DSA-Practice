@@ -46,7 +46,7 @@ Node* removesHead(Node* head) {
 
 Node* deleteTail(Node* head) {
     if (head == nullptr || head->next == nullptr) {
-        return nullptr; // since there is only one element which is both head & tail!
+        return nullptr; // since there is only one element which is both head & tail or no ele at all!
     }
     // in all other cases there will be minimum of two elements, so deletion of tail is possible
     Node* temp = head; 
@@ -60,11 +60,46 @@ Node* deleteTail(Node* head) {
     return head; 
 }
 
+
+// delete kth element of a linked list
+// if length of LL is less than k, don't delete anything.
+// if k = 1; delete the head, simple case
+// if k = lengthofLL(); delete the tail, simple case again
+// if k > lengthofLL(); return head simply with no change
+// if 1 < k > lengthofLL(); then: 
+
+Node* deleteK(Node* head, int k) {
+    if (head == nullptr) return head; // basic edge case
+
+    if (k == 1) {
+        Node* temp = head; 
+        head = head->next;
+        delete temp; 
+        return head; 
+    } // second edge case (basically deleting the head)
+
+    int cnt = 0; 
+    Node* temp = head; 
+    Node* prev = nullptr; 
+    while (temp != nullptr) {
+        cnt++; 
+        if (cnt == k) {
+            prev->next = prev->next->next; 
+            delete temp; 
+            break; 
+        }
+        prev = temp; 
+        temp = temp->next; 
+    }
+    return head; 
+}
+
+
 int main() {
     vector<int> nums = {12, 44, 87, 136, 299}; 
     Node* head = arraytoll(nums); 
      
     print(head); 
-    head = deleteTail(head); 
+    head = deleteK(head, 7); 
     print(head); 
 }
