@@ -25,5 +25,10 @@ int binarySearch(vector<int> arr, int target) {
 }
 
 int main() {
+    vector<int> nums = {2, 3, 5, 6, 7, 9, 10, 12, 13, 15, 17, 27}; 
+    int target = 13; 
 
+    cout << "Position(index) of " << target << " is: " << binarySearch(nums, target); 
+    
+    return 0; 
 }
