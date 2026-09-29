@@ -1,41 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
-int floor(const vector<int> nums, int x) {
-    int floor = -1; 
-    int low = 0, high = nums.size() - 1; 
-
-    // if (low > high) return floor; 
+int floor(const vector<int> nums, int target) {
+    int n = nums.size();  
+    int low = 0, high = n - 1, ans = -1; 
 
     while (low <= high) {
         int mid = (low + high) / 2; 
 
-        if (x < nums[mid]) {
-            high = mid - 1; 
-        } else {
+        if (nums[mid] <= target) {
+            ans = mid; 
             low = mid + 1; 
-            floor = nums[mid]; 
+        } else {
+            high = mid - 1; 
         }
     }
-
-    return floor; 
+    return ans; 
 }
 
-int ceil(const vector<int> nums, int x) {
-    int ceil = -1; 
-    int low = 0, high = nums.size() - 1; 
+int ceil(const vector<int> nums, int target) {
+    int n = nums.size(); 
+    int low = 0, high = n - 1, ans = n; 
 
     while (low <= high) {
         int mid = (low + high) / 2; 
 
-        if (x > nums[mid]) {
-            low = mid + 1; 
-        } else {
+        if (nums[mid] >= target) {
+            ans = mid; 
             high = mid - 1; 
-            ceil = nums[mid]; 
+        } else {
+            low = mid + 1; 
         }
     }
-    return ceil;
+    return ans;
 }
 
 int main() {
