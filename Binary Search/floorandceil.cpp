@@ -35,6 +35,47 @@ int ceil(const vector<int> nums, int target) {
     return ans;
 }
 
+class Solution {
+public:
+    vector<int> getFloorAndCeil(vector<int> nums, int x) {
+        int n = nums.size(), low = 0, high = n; 
+        int floor = -1, ceil = -1; 
+
+        while (low <= high) {
+            int mid = (low + high) / 2; 
+
+            if (nums[mid] == x) {
+                return {nums[mid], nums[mid]}; 
+            }
+            else if (nums[mid] <= x) {
+                low = mid + 1; 
+                floor = mid; 
+            } else {
+                high = mid - 1; 
+                ceil = mid; 
+            }
+        }
+        // while (low <= high) {
+        //     int mid = (low + high) / 2; 
+
+        //     if (nums[mid] < x) {
+        //         low = mid + 1;  
+        //     } else {
+        //         high = mid - 1; 
+        //         ceil = mid; 
+        //     }
+        // }
+
+        if (ceil == -1) {
+            return {nums[floor], -1}; 
+        } else if (floor == -1) {
+            return {-1, nums[ceil]}; 
+        } else {
+            return {nums[floor], nums[ceil]}; 
+        }
+    }
+};
+
 int main() {
     vector<int> nums = {2, 3, 5, 6, 7, 9, 10, 12, 13, 15, 17, 27};
 
