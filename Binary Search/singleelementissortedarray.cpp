@@ -2,24 +2,22 @@
 using namespace std; 
 
 int singleNumber(vector<int>& nums) {
-    int n = nums.size(), low = 0, high = n - 1; 
-    int ans = -1; 
-    int temp; 
-
-    int i = 0; 
+    int n = nums.size(); 
+    int ans = 0; 
 
     if (n == 1) {
         return nums[0]; 
     }
 
+    int i = 0; 
     while (i < n) {
-        temp = nums[i]; 
-        if (nums[i + 1] == temp) {
-            i += 2; 
+        if (nums[i] == nums[i - 1] || nums[i] == nums[i + 1]) {
+            i++; 
         } else {
             return nums[i]; 
         }
     }
+
     return ans; 
 }
 
