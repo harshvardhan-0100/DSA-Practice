@@ -3,27 +3,32 @@ using namespace std;
 
 int rotationCount(vector<int>& nums) {
     int n = nums.size(), low = 0, high = n - 1; 
-    int ans = INT_MAX; 
+    int mini = INT_MAX, ans = 0; 
     
     while (low <= high) {
         int mid = (low + high) / 2; 
 
         if (nums[low] <= nums[mid]) {
-            if (nums[low] < ans) {
-                ans = nums[low]; 
-                low = mid + 1; 
+            if (nums[low] < mini) {
+                mini = nums[low]; 
+                ans = low; 
             } 
-        } else {
-            if (nums[mid] < ans) {
-                ans = nums[mid]; 
-                high = mid - 1; 
+
+            low = mid + 1; 
+        } 
+        else {
+            if (nums[mid] < mini) {
+                mini = nums[mid]; 
+                ans = mid;
             }
+
+            high = mid - 1; 
         }
     }
     return ans; 
 }
 
 int main() {
-    vector<int> nums = {4, 5, 6, 7, 0, 1, 2}; 
+    vector<int> nums = {5, 6, 7, 0, 1, 2}; 
     cout << rotationCount(nums); 
 }
