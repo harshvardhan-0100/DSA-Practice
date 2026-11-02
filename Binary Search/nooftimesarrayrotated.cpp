@@ -2,30 +2,20 @@
 using namespace std; 
 
 int rotationCount(vector<int>& nums) {
-    int n = nums.size(), low = 0, high = n - 1; 
-    int mini = INT_MAX, ans = 0; 
-    
-    while (low <= high) {
-        int mid = (low + high) / 2; 
+    int n = nums.size();
+    int low = 0, high = n - 1;
 
-        if (nums[low] <= nums[mid]) {
-            if (nums[low] < mini) {
-                mini = nums[low]; 
-                ans = low; 
-            } 
+    while (low < high) {
+        int mid = low + (high - low) / 2;
 
-            low = mid + 1; 
-        } 
-        else {
-            if (nums[mid] < mini) {
-                mini = nums[mid]; 
-                ans = mid;
-            }
-
-            high = mid - 1; 
+        if (nums[mid] > nums[high]) {
+            low = mid + 1;
+        } else {
+            high = mid;
         }
     }
-    return ans; 
+
+    return low;
 }
 
 int main() {
