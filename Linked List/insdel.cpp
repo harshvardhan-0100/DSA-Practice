@@ -69,28 +69,31 @@ Node* deleteTail(Node* head) {
 // if 1 < k > lengthofLL(); then: 
 
 Node* deleteK(Node* head, int k) {
-    if (head == nullptr) return head; // basic edge case
+    if (head == nullptr) return head; 
 
     if (k == 1) {
         Node* temp = head; 
-        head = head->next;
+        head = head->next; 
         delete temp; 
         return head; 
-    } // second edge case (basically deleting the head)
+    }
 
-    int cnt = 0; 
+    int cnt = 1; 
     Node* temp = head; 
     Node* prev = nullptr; 
-    while (temp != nullptr) {
-        cnt++; 
+
+    while (temp && cnt <= k) {
         if (cnt == k) {
-            prev->next = prev->next->next; 
+            prev->next = temp->next; 
             delete temp; 
-            break; 
+            return head; 
         }
-        prev = temp; 
+ 
+        prev = temp;
         temp = temp->next; 
+        cnt++; 
     }
+
     return head; 
 }
 
@@ -123,6 +126,9 @@ int main() {
     Node* head = arraytoll(nums); 
      
     print(head); 
-    head = deleteEl(head, 136); 
+    // head = deleteEl(head, 136); 
+    // print(head); 
+
+    deleteK(head, 2); 
     print(head); 
 }
